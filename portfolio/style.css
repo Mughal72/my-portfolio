@@ -1,0 +1,211 @@
+/* style.css */
+
+/* Custom Font Import (if not using Google Fonts CDN directly in HTML) */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
+
+/* Base styles and utility classes are handled by Tailwind CSS */
+
+/* Ensure html and body take full viewport height for proper scrolling */
+html, body {
+    min-height: 100vh;
+}
+
+/* Explicitly fix the navbar to the top */
+nav {
+    position: fixed;
+    top: 0;
+    /* Tailwind classes like w-full and z-50 are already doing their job */
+}
+
+/* Custom Animations for Hero Section Background */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.3, 0.9);
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+    animation-delay: 6s;
+}
+
+/* General Fade In Up Animation for Sections */
+@keyframes fadeInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInFromBottom 1s ease-out forwards;
+    opacity: 0; /* Hidden by default, shown by JS on scroll */
+}
+
+/* Specific Hero Section Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in-up-delay {
+    animation: fadeInFromBottom 1s ease-out 0.5s forwards; /* Add a slight delay */
+    opacity: 0;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 1s ease-out 0.3s forwards; /* Slight delay for staggered effect */
+    opacity: 0;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 1s ease-out 0.6s forwards; /* Further delay */
+    opacity: 0;
+}
+
+/* Project Carousel Specific Styles */
+#project-carousel {
+    scroll-behavior: smooth; /* Smooth scrolling for carousel */
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+/* Ensure project cards are always visible for carousel calculation */
+.project-card {
+    min-width: 100%; /* Default to full width on small screens */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .project-card {
+        min-width: 50%; /* Show 2 cards on medium screens */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .project-card {
+        min-width: 33.3333%; /* Show 3 cards on large screens */
+    }
+}
+
+/* Hide scrollbar for carousel */
+#project-carousel::-webkit-scrollbar {
+    display: none;
+}
+#project-carousel {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Optional: Add a subtle glow/shadow to active elements or on hover */
+.group:hover .group-hover\:w-full {
+    width: 100%;
+}
+
+/* Animation for service and skill cards on hover */
+.service-card:hover, .skill-category:hover, .education-entry:hover, .work-process-step:hover {
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); /* Purple shadow */
+    border-color: #8B5CF6; /* Purple border */
+    transform: scale(1.05) translateY(-5px); /* Enhanced hover effect */
+}
+
+/* General section padding for consistency */
+section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Ensure full height for hero section */
+#hero {
+    min-height: 100vh;
+}
+
+/* Custom styles for form elements focus */
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5); /* Purple ring */
+    border-color: #8B5CF6; /* Purple border on focus */
+}
+
+/* Adjust padding for fixed navbar */
+body {
+    padding-top: 5rem; /* Adjust based on navbar height */
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section Title Enhancements */
+.section-title {
+    letter-spacing: 0.05em; /* Slightly wider letter spacing */
+    /* text-shadow: 0 0 10px rgba(139, 92, 246, 0.6); */ /* Optional subtle text shadow */
+}
+
+/* Footer Social Icons Hover Effect */
+.footer-icon {
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform */
+}
+
+.footer-icon:hover {
+    color: #8B5CF6; /* Purple color on hover */
+    transform: scale(1.2); /* Slightly larger on hover */
+}
+
+/* Modal Styling */
+#message-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#message-modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#message-modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
